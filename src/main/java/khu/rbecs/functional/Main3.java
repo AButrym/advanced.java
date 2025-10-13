@@ -9,7 +9,25 @@ import java.util.stream.Stream;
 
 public class Main3 {
     // StreamAPI
+
     public static void main(String... args) {
+        // terminal:
+        // reduce
+        Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
+        int sum = integerStream
+//                .parallel()
+//                .reduce(0, (acc, el) -> acc + el);
+//                .reduce(1, (acc, el) -> acc * el);
+//                .reduce(Integer.MIN_VALUE, (acc, el) -> Math.max(acc, el));
+                .reduce(Integer.MAX_VALUE, (acc, el) -> Math.min(acc, el));
+        String res = Stream.of(1, 2, 3, 4, 5, 6)
+                .parallel()
+                .reduce("", (acc, el) -> acc + el, String::concat);
+        System.out.println("sum = " + sum);
+        System.out.println("res = " + res);
+    }
+
+    public static void main8(String... args) {
         // terminal:
         // forEach(), findFirst/findAny
         // toList
